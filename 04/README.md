@@ -10,7 +10,7 @@ yarn init
 yarn add express
 
 # Express geting start
-базовый код index.js
+базовый код index.js из интернета
 
 # установка nodemon (nodemonitor)
 лучше локальная устновка и в devDepencies
@@ -20,23 +20,26 @@ yarn add nodemon -D
 yarn nodemon index.js 
 
 # дебагинг проекта
-yarn nodemon --inspect index.js 
+ 💲 yarn nodemon --inspect index.js 
 
-<span style="color:blue">some *blue* text</span>
+# 📌 TypeScript 
+# установка
+yarn add typescript ts-node @types/express @types/node -D
 
-$\color{color-code}{your-text-here}$
+расширение файла - .ts
 
-// resets
-s { text-decoration:none; } //strike-through
-em { font-style: normal; font-weight: bold; } //italic emphasis
+# компиляция index.ts
+yarn tsc  index.ts
+
+# инициализация TypeScript
+yarn tsc --init
+
+ 💲 yarn tsc -w (в режиме наблюдения)
+
+# Используем 2 терминала с командами  💲 или создаем в package.json
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "nodemon .\\dist\\index.js"
+  },
 
 
-// colors
-s { color: green }
-em { color: blue }
-
-
-~~This is green~~
-_this is blue_
-
-This is *red* {: style="color: red"}.
