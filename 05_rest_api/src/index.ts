@@ -6,7 +6,7 @@ const port = 3000
 
 
 app.get('/', (req,res) => {
-  res.sendStatus(404)
+  res.send({message: ' Смотри другие брейк-поинты '})
 })
 
 app.get('/courses', (req, res) => {
@@ -26,17 +26,18 @@ app.get('/courses/:id', (req, res) => {
     { id: 3, title: "yuranius" },
     { id: 4, title: "css" },
     { id: 5, title: "reactjs" }
-  ].find(c => c.id === +req.params.id)
+  ].find(c => c.id === Number(req.params.id)) // ищем в массиве данных элемент с ID, указанным в :id, предварительно преобразовав :id, в число (можно еще так +req.params.id)
 
-
-
-  res.json (foundCourses)
- 
 
   if(!foundCourses){
-    res.sendStatus(404)
+    res.status(404).json( {message: "Курс не найден"} )
     return
   }
+
+  res.status(201).json (foundCourses)
+ 
+
+
 
 
 })
