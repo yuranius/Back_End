@@ -37,10 +37,8 @@ type Props = {
   res: any,
 }
 
-app.post('/file', upload.single('image'), (req ,res) => {
-  const file = req.file
-  const body = req.body
-  console.log('📢 [index.ts:80]', file, req.body.title);
+app.post('/file', upload.single('image'), ({body, file}:any , res) => {
+  console.log('📢 [index.ts:80]', file, body.title);
   res.status(201).json({file, body})
 })
 
