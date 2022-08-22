@@ -6,7 +6,6 @@ const jsonBodyMiddleware = express.json()
 
 app.use(jsonBodyMiddleware)
 
-
 const db = {
   courses: [
     { id: 1, title: "front-end" },
@@ -20,7 +19,7 @@ const db = {
 
 
 app.get('/', (req,res) => {
-  res.send({message: ' Смотри другие брейк-поинты '})
+  res.send({message: ' Не верный запрос '})
 })
 
 
@@ -41,21 +40,19 @@ app.get('/courses', (req, res) => {
 
 
 app.get('/courses/:id', (req, res) => {
- db.courses.find(c => c.id === Number(req.params.id)) // ищем в массиве данных элемент с ID, указанным в :id, предварительно преобразовав :id, в число (можно еще так +req.params.id)
+  let course = db.courses.find(c => c.id === Number(req.params.id)) // ищем в массиве данных элемент с ID, указанным в :id, предварительно преобразовав :id, в число (можно еще так +req.params.id)
 
 
-  if(!db.courses){
+  if(!course){
     res.status(404).json( {message: "Курс не найден"} )
     return
   }
-  res.status(201).json (db.courses)
+
+  res.status(201).json (course)
 
 })
 
 app.post('/courses', (req,res) => {
-
-    console.log( '📌:',req.body,'🌴 🏁')
-    
     
     const createdCourse = {
         id: +(new Date()),

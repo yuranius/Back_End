@@ -43,3 +43,9 @@ yarn tsc --init
   },
 
 
+# Закачка файлов на сервер Multer:
+Установка Multer
+yarn add multer --save
+
+Установка fs
+
